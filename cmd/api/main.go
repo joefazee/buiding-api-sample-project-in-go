@@ -18,11 +18,11 @@ import (
 	"greenlight.abahjoseph.com/internal/mailer"
 )
 
-// api version
-const version = "1.0.0"
-
-// build time
-var buildTime string
+// build time variables
+var (
+	buildTime string
+	version   string
+)
 
 // define config
 type config struct {
