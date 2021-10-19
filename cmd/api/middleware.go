@@ -59,11 +59,8 @@ func (app *application) rateLimit(next http.Handler) http.Handler {
 		//Launch a background goroutine which removes old entires from clients map once
 		// every minute
 		go func() {
-
-			app.logger.PrintInfo(fmt.Sprintf("started rate limiter clean up - total bucket size %d", len(clients)), nil)
 			for {
 				time.Sleep(time.Minute)
-
 				// Lock the mutex to prevent any rate limiter checks from happening while
 				// the cleanup is taking place.
 				mu.Lock()
@@ -72,10 +69,8 @@ func (app *application) rateLimit(next http.Handler) http.Handler {
 				for ip, client := range clients {
 					if time.Since(client.lastSeen) > 3*time.Minute {
 						delete(clients, ip)
-						app.logger.PrintInfo("rate limiter data cleaned up for "+ip, nil)
 					}
 				}
-
 				// Importantly, unlock the mutex when the cleanup is complete.
 				mu.Unlock()
 			}
