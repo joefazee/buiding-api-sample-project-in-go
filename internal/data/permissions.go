@@ -10,7 +10,7 @@ import (
 
 type Permissions []string
 
-//Include check if a code exists in permissions array
+// Include check if a code exists in permissions array
 func (p Permissions) Include(code string) bool {
 	for i := range p {
 		if code == p[i] {
@@ -29,9 +29,9 @@ func (m PermissionModel) GetAllForUser(userID int64) (Permissions, error) {
 	query := `
 		SELECT permissions.code
 		FROM permissions
-		INNER JOIN users_permissions ON users_permissions.user_id = permissions.id 
+		INNER JOIN users_permissions ON users_permissions.permission_id = permissions.id
 		INNER JOIN users ON users_permissions.user_id = users.id
-		WHERE users.id = $1 
+		WHERE users.id = $1
 	`
 
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)

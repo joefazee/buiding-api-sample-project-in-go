@@ -82,7 +82,7 @@ func (m TokenModel) Insert(token *Token) error {
 
 }
 
-//DeleteAllForUser() deletes all tokens for a specific user and scope
+// DeleteAllForUser() deletes all tokens for a specific user and scope
 func (m TokenModel) DeleteAllForUser(scope string, userID int64) error {
 
 	query := `

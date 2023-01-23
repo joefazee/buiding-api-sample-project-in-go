@@ -9,7 +9,7 @@ How to create new database
 How to switch to a new databse
 `postgres=# \c dbname`
 
-**Must of the commands below are to be executed after you have switched database**
+**Most of the commands below are to be executed after you have switched database**
 
 How to create a new user (role)
 `CREATE ROLE newrole WITH LOGIN PASSWORD 'pa55word';`

@@ -18,7 +18,7 @@ confirm:
 # ==================================================================================== #
 .PHONY: run/api
 run/api:
-	@go run ./cmd/api -db-dns=${GREENLIGHT_DB_DSN}
+	@go run ./cmd/api -db-dsn=${GREENLIGHT_DB_DSN}
 
 ## db/psql: connect to the database using psql
 .PHONY: db/psql
@@ -28,7 +28,7 @@ db/psql:
 ## db/migrations/up: apply all up database migrations
 .PHONY: db/migrations/up
 db/migrations/up: confirm
-	@echo 'Running migrations'
+	@echo 'Running migrations ${GREENLIGHT_DB_DSN}'
 	migrate -path ./migrations -database ${GREENLIGHT_DB_DSN} up
 
 ## db/migrations/new name=$1: create a new database migration

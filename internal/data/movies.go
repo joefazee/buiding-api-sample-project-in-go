@@ -12,7 +12,7 @@ import (
 	"greenlight.abahjoseph.com/internal/validator"
 )
 
-//TODO: Review the hardcoded context 3 seconds timeout
+// TODO: Review the hardcoded context 3 seconds timeout
 type MovieModel struct {
 	DB *sql.DB
 }
